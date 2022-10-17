@@ -62,7 +62,7 @@ if win == True:
         print("You WIN!")
     elif (third_choice == "Blue") or (third_choice == "blue"):
         win = False
-        print("You diedddd")
+        print("You died.")
     else:
         print("You died.")
 

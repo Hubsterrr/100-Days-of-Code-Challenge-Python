@@ -12,7 +12,7 @@ display = ["_"] * len(chosen_word)
 
 # while there are blank spaces inside chosen word
 while "_" in display:
-    
+
     print(stages[lifes])
     print(f"{' '.join(display)}")
 
