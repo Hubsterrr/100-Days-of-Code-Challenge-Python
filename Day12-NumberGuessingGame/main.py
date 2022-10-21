@@ -25,7 +25,6 @@
 
 
 ################# DAY 12 PROJECT - NUMBER GUESSING GAME ###################
-import random
 from art import logo
 from random import randint
 
