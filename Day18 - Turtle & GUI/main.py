@@ -1,15 +1,15 @@
 from turtle import Turtle, Screen
 import random
-#
-# tim = Turtle()
-# screen = Screen()
-# screen.colormode(255)
-# tim.shape("turtle")
-# tim.color("DarkBlue")
-#
+
+tim = Turtle()
+screen = Screen()
+screen.colormode(255)
+tim.shape("turtle")
+tim.color("DarkBlue")
 
 
-################ Challenge - Generate different shapes with different colours ###############
+
+############### Challenge - Generate different shapes with different colours ###############
 # triangle - 120
 # Square - 90
 # pentagon - 72(5)
@@ -19,7 +19,7 @@ import random
 # nonagon 40 (9)
 # decagon 36 (10)
 #
-#
+# #
 #
 # angles = [120, 90, 72, 60, 51.42, 45, 40, 36]
 # x = 0
@@ -78,7 +78,7 @@ import random
 ############### DAY 18 PROJECT - Hirst Painting ################
 
 import colorgram
-
+#
 # colors = colorgram.extract('image.jpg', 30)
 # rgb_colors = []
 # for color in colors:
