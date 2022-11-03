@@ -12,8 +12,8 @@ class Hud(Turtle):
         self.speed("fastest")
         self.color("white")
         self.draw_center()
-        self.player_score = 0
-        self.bot_score = 0
+        self.left_score = 0
+        self.right_score = 0
         self.update_scoreboard()
 
     def draw_center(self):
@@ -30,8 +30,6 @@ class Hud(Turtle):
         self.clear()
         self.draw_center()
         self.goto(x=-100, y=440)
-        self.write(str(self.player_score), False, ALIGNMENT, font=FONT)
+        self.write(str(self.left_score), False, ALIGNMENT, font=FONT)
         self.goto(x=100, y=440)
-        self.write(str(self.bot_score), False, ALIGNMENT, font=FONT)
-
-
+        self.write(str(self.right_score), False, ALIGNMENT, font=FONT)

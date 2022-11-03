@@ -1,11 +1,8 @@
-
-#class player
-#class bot
-#class game mechanics
 from hud import Hud
 from paddles import Paddles
 from ball import Ball
 from turtle import Screen
+import time
 
 RIGHT = 0
 RIGHT_UP = 45
@@ -23,8 +20,8 @@ screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
 
-
 hud = Hud()
+
 player_paddle = Paddles("player")
 bot_paddle = Paddles("bot")
 ball = Ball()
@@ -37,41 +34,46 @@ screen.onkey(player_paddle.down, "Down")
 # Game loop
 game_is_on = True
 while game_is_on:
-    screen.update()
 
-    ball.forward(9)
+    ball.restart()
+    no_score = True
+    time.sleep(0.5)
+    while no_score:
+        screen.update()
 
-    bot_paddle.move()
+        ball.forward(5)
 
-    # Detect collision with Player paddle
-    player_paddle_angle = -45
-    for chunk in player_paddle.paddle:
-        if chunk.distance(ball) < 10:
-            ball.setheading(player_paddle_angle)
-        player_paddle_angle += 15
+        bot_paddle.move()
 
-    # Detect collision with Bot paddle
-    bot_paddle_angle = 225
-    for chunk in bot_paddle.paddle:
-        if chunk.distance(ball) < 10:
-            ball.setheading(bot_paddle_angle)
-        bot_paddle_angle += -15
+        # Detect collision with Player paddle
+        player_paddle_angle = -45
+        for chunk in player_paddle.paddle:
+            if chunk.distance(ball) <= 15:
+                ball.setheading(player_paddle_angle)
+            player_paddle_angle += 15
 
-    # Detect collision with top or bottom wall
-    if ball.ycor() > 530 or ball.ycor() < -530:
-        angle = ball.heading()
-        ball.setheading(angle + 83)
+        # Detect collision with Bot paddle
+        bot_paddle_angle = 225
+        for chunk in bot_paddle.paddle:
+            if chunk.distance(ball) <= 15:
+                ball.setheading(bot_paddle_angle)
+            bot_paddle_angle += -15
 
-    #Detect collision with side walls
-    if ball.xcor() > 950:
-        ball.restart()
-        hud.player_score += 1
-        hud.update_scoreboard()
+        # Detect collision with top or bottom wall
+        if ball.ycor() > 510 or ball.ycor() < -510:
+            angle = ball.heading()
+            ball.setheading(angle + 90)
 
-    elif ball.xcor() < -950:
-        ball.restart()
-        hud.bot_score += 1
-        hud.update_scoreboard()
+        #Detect collision with side walls
+        if ball.xcor() > 950:
+            hud.player_score += 1
+            hud.update_scoreboard()
+            no_score = False
+
+        elif ball.xcor() < -950:
+            hud.bot_score += 1
+            hud.update_scoreboard()
+            no_score = False
 
 
 screen.exitonclick()
