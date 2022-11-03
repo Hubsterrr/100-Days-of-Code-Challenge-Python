@@ -39,7 +39,7 @@ while game_is_on:
             left.move()
 
         # Detect collision with left and right paddle
-        if ball.xcor() >= 910 and right.distance(ball) <= 80 or ball.xcor() <= 910 and left.distance(ball) <= 80:
+        if ball.xcor() >= 910 and right.distance(ball) <= 80 or ball.xcor() <= -910 and left.distance(ball) <= 80:
             ball.bounce_x()
             ball.bounce_paddle()
 
@@ -48,13 +48,13 @@ while game_is_on:
             ball.bounce_y()
 
         # Detect collision with side walls
-        if ball.xcor() > 960:
+        if ball.xcor() > 920:
             hud.right_score += 1
             hud.update_scoreboard()
             ball.restart()
             no_score = False
 
-        if ball.xcor() < -960:
+        if ball.xcor() < -920:
             hud.left_score += 1
             hud.update_scoreboard()
             ball.restart()
