@@ -3,8 +3,6 @@ from turtle import Turtle
 MOVE_DISTANCE = 60
 UP = 90
 DOWN = 270
-LEFT_SIDE = -930
-RIGHT_SIDE = 930
 
 
 class Paddle(Turtle):

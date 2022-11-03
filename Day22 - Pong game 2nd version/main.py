@@ -4,15 +4,6 @@ from turtle import Screen
 from hud import Hud
 import time
 
-RIGHT = 0
-RIGHT_UP = 45
-UP = 90
-LEFT_UP = 135
-LEFT = 180
-LEFT_DOWN = 225
-DOWN = 270
-RIGHT_DOWN = 315
-
 screen = Screen()
 screen.setup(width=1920, height=1080)
 screen.bgcolor("black")
