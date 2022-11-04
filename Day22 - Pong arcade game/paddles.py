@@ -4,8 +4,8 @@ from turtle import Turtle
 MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
-LEFT_SIDE = -930
-RIGHT_SIDE = 930
+LEFT_SIDE = -830
+RIGHT_SIDE = 830
 PLAYER_POSITION = [(LEFT_SIDE, -60), (LEFT_SIDE, -40), (LEFT_SIDE, -20),
                      (LEFT_SIDE, 0),
                      (LEFT_SIDE, 20), (LEFT_SIDE, 40), (LEFT_SIDE, 60)]

@@ -10,8 +10,8 @@ screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
 
-right = Paddle((930, 0))
-left = Paddle((-930, 0))
+right = Paddle((850, 0))
+left = Paddle((-850, 0))
 
 hud = Hud()
 ball = Ball()
@@ -39,7 +39,7 @@ while game_is_on:
             left.move()
 
         # Detect collision with left and right paddle
-        if ball.xcor() >= 910 and right.distance(ball) <= 80 or ball.xcor() <= -910 and left.distance(ball) <= 80:
+        if ball.xcor() >= 830 and right.distance(ball) <= 80 or ball.xcor() <= -830 and left.distance(ball) <= 80:
             ball.bounce_x()
             ball.bounce_paddle()
 
@@ -48,13 +48,13 @@ while game_is_on:
             ball.bounce_y()
 
         # Detect collision with side walls
-        if ball.xcor() > 920:
+        if ball.xcor() > 870:
             hud.right_score += 1
             hud.update_scoreboard()
             ball.restart()
             no_score = False
 
-        if ball.xcor() < -920:
+        if ball.xcor() < -870:
             hud.left_score += 1
             hud.update_scoreboard()
             ball.restart()

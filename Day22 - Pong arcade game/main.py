@@ -15,7 +15,7 @@ RIGHT_DOWN = 315
 
 
 screen = Screen()
-screen.setup(width=1920, height=1080)
+screen.setup(width=1820, height=980)
 screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
