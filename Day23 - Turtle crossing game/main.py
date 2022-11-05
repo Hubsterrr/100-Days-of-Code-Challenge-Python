@@ -15,19 +15,20 @@ scoreboard = Scoreboard()
 screen.listen()
 screen.onkey(player.go, "Up")
 
+# Game loop
 game_is_on = True
 while game_is_on:
-    print(cars.car_speed)
     screen.update()
     cars.generate_cars_offscreen()
     cars.move()
 
     # check collision with a car
     for car in cars.cars:
-        if player.distance(car) < 20:
+        if player.distance(car) < 19:
             scoreboard.game_over()
             game_is_on = False
 
+    # check if player has passed the level
     if player.ycor() > 280:
         scoreboard.level += 1
         scoreboard.update_scoreboard()
@@ -35,3 +36,4 @@ while game_is_on:
         cars.next_level_speedup()
 
 screen.exitonclick()
+
