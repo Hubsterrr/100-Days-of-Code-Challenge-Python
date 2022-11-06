@@ -9,19 +9,6 @@ screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-# snake = []
-# starting_position = [(0, 0), (-20, 0), (-40, 0)]
-#
-# for position in starting_position:
-#     snake_piece = Turtle("square")
-#     snake_piece.color("white")
-#     snake_piece.penup()
-#     snake_piece.goto(position)
-#     snake.append(snake_piece)
-
-
-
-
 snake = Snake()
 
 screen.listen()
