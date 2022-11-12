@@ -1,5 +1,4 @@
 from tkinter import *
-import math
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
