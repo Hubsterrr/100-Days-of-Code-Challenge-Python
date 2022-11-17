@@ -7,7 +7,6 @@ import pandas as pd
 global current_card
 BACKGROUND_COLOR = "#B1DDC6"
 
-
 try:
     data = pd.read_csv("data/words_to_learn.csv")
 except FileNotFoundError:
