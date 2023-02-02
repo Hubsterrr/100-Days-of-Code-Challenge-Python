@@ -24,10 +24,10 @@ sheety_headers = {
 
 parameters = {
     "query": query,
-    "gender": "female",
-    "weight_kg": 72.5,
-    "height_cm": 167.64,
-    "age": 30
+    "gender": "male",
+    "weight_kg": 82.5,
+    "height_cm": 177.64,
+    "age": 23
 }
 
 date = dt.datetime.now()
