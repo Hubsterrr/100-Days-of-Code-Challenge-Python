@@ -13,22 +13,15 @@ class DataManager:
         data = response.json()["prices"]
         return data
 
-
-    def get_iata_codes(self):
-        data = self.get_flight_data()
-
-        for destination in data:
-            iata = destination["iataCode"]
-            self.iata_list.append(iata)
-
-        return self.iata_list
-
-    # def get_lowest_prices(self):
-    #     lowest_price = {}
-    #
-    #     data = self.get_flight_data()
-    #     for destination in data:
-    #
-    #     keys_to_extract = ['iataCode', 'lowestPrice']
-    #     new_dict = {key: data[key] for key in keys_to_extract if key in data}
-    #     return new_dict
+    def update_flight_deal(self, deal_id, deal_price, search_date, departure_date, return_date):
+        deal_data = {
+            "price": {
+                "lowestPrice": deal_price,
+                "dateWhenFound": search_date,
+                "departureDateLondon": departure_date,
+                "returnDate": return_date,
+            }
+        }
+        response = requests.put(url=f"https://api.sheety.co/e3c04c44689f6e1dbab65cb8ab4e1ac1/flightDeals/prices/{deal_id}",
+                                json=deal_data)
+        response.raise_for_status()

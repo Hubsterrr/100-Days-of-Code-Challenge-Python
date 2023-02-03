@@ -7,14 +7,14 @@ CURRENCY = "GBP"
 # This class is responsible for talking to the Flight Search API.
 class FlightSearch:
 
-    def __init__(self, dest_iata, dateFrom, dateTo,):
+    def __init__(self, dest_iata, dateFrom, dateTo, stay_length):
         self.parameters = {
             "fly_from": FLY_FROM,
             "fly_to": dest_iata,
             "dateFrom": dateFrom,
             "dateTo": dateTo,
-            "nights_in_dst_from": 7,
-            "nights_in_dst_to": 7,
+            "nights_in_dst_from": stay_length,
+            "nights_in_dst_to": stay_length,
             "max_stopovers": 0,
             "curr": CURRENCY
         }
