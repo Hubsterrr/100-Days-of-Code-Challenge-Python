@@ -2,6 +2,8 @@
 from data_manager import DataManager
 from flight_search import FlightSearch
 from flight_data import FlightData
+from notification_manager import NotificationManager
+import smtplib
 import datetime as dt
 
 
@@ -32,6 +34,8 @@ for flight_from_sheet in flight_data:
 
     iata_code = flight_from_sheet["iataCode"]
 
+
+
     # Search the destination
     flight_data = FlightSearch(iata_code, today, six_months_later, STAY_LENGTH)
     cheapest_flight = flight_data.search_flight()
@@ -39,13 +43,21 @@ for flight_from_sheet in flight_data:
 
     # If new deal is better than the one in Google sheet - send info and update deal
     if cheapest_flight_data.price < lowest_price:
+
+        #Update Google sheet
         data.update_flight_deal(deal_id=flight_deal_id,
                                 deal_price=cheapest_flight_data.price,
                                 search_date=today,
-                                departure_date=cheapest_flight_data.departure_date,
-                                return_date=cheapest_flight_data.return_date)
-        #Send Email
+                                departure_date=cheapest_flight_data.departure_datetime,
+                                return_date=cheapest_flight_data.return_datetime
+                                )
 
-        #Send SMS via Twilio API
+        # Send E-mail and SMS
+        notification = NotificationManager(flight_data=cheapest_flight)
+        notification.send_email()
+        # notification.send_sms()
+        print(f"Deal found for {cheapest_flight_data.city_to}")
+    else:
+        print(f"No better deal for {cheapest_flight_data.city_to}")
 
     flight_deal_id += 1
