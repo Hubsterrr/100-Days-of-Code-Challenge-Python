@@ -20,9 +20,14 @@ class FlightSearch:
         }
 
     def search_flight(self):
+        print(self.parameters)
         response = requests.get(url="https://api.tequila.kiwi.com/v2/search", headers=HEADERS, params=self.parameters)
         response.raise_for_status()
         raw_data = response.json()
-        cheapest_flight = raw_data["data"][0]
+        try:
+            cheapest_flight = raw_data["data"][0]
+        except IndexError:
+            cheapest_flight = "ERROR"
+
         return cheapest_flight
 

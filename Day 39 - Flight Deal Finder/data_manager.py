@@ -29,21 +29,40 @@ class DataManager:
                                 json=deal_data)
         response.raise_for_status()
 
-    # NOT FINISHED (Ran out of calls in sheety api)
     def update_iata_codes(self):
         data = self.get_flight_data()
+        dest_id = 2
         for destination in data:
             city = destination["city"]
-            print(city)
+
             parameters = {
                 "term": city,
                 "locale": "en_US",
-                "location_types": city,
+                "location_types": "city",
             }
 
             response = requests.get(url="https://api.tequila.kiwi.com/locations/query", headers=HEADERS, params=parameters)
             response.raise_for_status()
             raw_data = response.json()
-            iata_code = raw_data["locations"][0]["city"]["code"]
-            print(iata_code)
+            try:
+                iata_code = raw_data["locations"][0]["code"]
+
+                iata_data = {
+                            "price": {"iataCode": iata_code}
+                            }
+
+                response = requests.put(url=f"https://api.sheety.co/e3c04c44689f6e1dbab65cb8ab4e1ac1/flightDeals/prices/{dest_id}",
+                                    json=iata_data)
+                response.raise_for_status()
+            except IndexError:
+                self.update_error(dest_id)
+            dest_id += 1
+    def update_error(self, flight_deal_id):
+        error = {
+            "price": {"lowestPrice": "ERROR"}
+        }
+        response = requests.put(
+            url=f"https://api.sheety.co/e3c04c44689f6e1dbab65cb8ab4e1ac1/flightDeals/prices/{flight_deal_id}",
+            json=error)
+        response.raise_for_status()
 
