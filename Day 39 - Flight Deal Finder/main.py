@@ -18,7 +18,7 @@ six_months_later_raw = today_raw + dt.timedelta(days=182)
 #today = today_raw.strftime("%d/%m/%Y")
 six_months_later = six_months_later_raw.strftime("%d/%m/%Y")
 
-today = "10/06/2023"
+today = "14/06/2023"
 
 # Get info from google sheet
 data = DataManager()
