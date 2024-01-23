@@ -1,0 +1,31 @@
+html{
+    background-color: black;
+}
+
+div {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    border: 5px solid white;
+}
+
+#top {
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-family: 'Libre Baskerville', serif;
+    margin: 10px;
+}
+
+#bottom {
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    margin: 20px;
+}
